@@ -1,6 +1,5 @@
 OrangeHRM Login Automation Test (Cypress)
 
-Deskripsi
 Automation testing untuk login page di website OrangeHRM.
 
 Test Case
