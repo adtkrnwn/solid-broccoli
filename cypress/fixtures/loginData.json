@@ -1,0 +1,10 @@
+{
+  "loginValid": {"username": "Admin", "password": "admin123"},
+  "invalidUsername": {"username": "kimjiwon"},
+  "invalidPasssword": {"password": "hannipham"},
+  "upperUsername":{"username": "ADMIN"},
+  "linkedinLink":{"linkedinURL": "https://www.linkedin.com/company/orangehrm/mycompany/"},
+  "facebookLink":{"facebookURL": "https://www.facebook.com/OrangeHRM/"},
+  "xLink":{"xURL": "https://twitter.com/orangehrm?lang=en"},
+  "youtubeLink":{"youtubeURL": "https://www.youtube.com/c/OrangeHRMInc"}
+}
