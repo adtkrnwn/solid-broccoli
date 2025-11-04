@@ -25,11 +25,11 @@ describe('Quiz 3', () => {
   });
 
   it('TC_LOGIN_003 - Login dengan username salah', () => {
-    cy.intercept('GET', 'https://opensource-demo.orangehrmlive.com/web/dist/css/chunk-vendors.css?v=1721393199309').as('chunk');
+    cy.intercept('GET', 'https://opensource-demo.orangehrmlive.com/web/index.php/core/i18n/messages').as('messages');
     cy.get('input[name="username"]').type('kimjiwon');
     cy.get('input[name="password"]').type('admin123');
     cy.get('button[type="submit"]').click();
-    cy.get('@chunk');
+    cy.wait('@messages');
     cy.get('.oxd-alert-content-text')
       .should('be.visible')
       .and('contain', 'Invalid credentials');
@@ -55,17 +55,17 @@ describe('Quiz 3', () => {
   it('TC_LOGIN_006 - Login dengan username uppercase', () => {
     cy.get('input[name="username"]').type('ADMIN');
     cy.get('input[name="password"]').type('admin123');
-    cy.intercept('GET', 'https://opensource-demo.orangehrmlive.com/web/dist/fonts/nunito-sans-v6-latin-ext_latin-italic.woff2').as('fontItalic');
+    cy.intercept('GET', 'https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index').as('index');
     cy.get('button[type="submit"]').click();
-    cy.get('@fontItalic');
+    cy.wait('@index');
     cy.url().should('include', '/dashboard');
   });
 
   it('TC_FORGOT_001 - Verifikasi link Forgot Password', () => {
+    cy.intercept('GET', 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode').as('passwordReset');
     cy.contains('Forgot your password?').should('be.visible').click();
     cy.url().should('include', '/requestPasswordResetCode');
-    cy.intercept('GET', 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode').as('passwordReset');
-    cy.get('@passwordReset');
+    cy.wait('@passwordReset');
     cy.contains('Reset Password').should('be.visible');
   });
 
